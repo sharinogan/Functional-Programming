@@ -1,28 +1,26 @@
 class Start {
     public static void main(String[] data) {
-        Item root = new Item();
-        root.name = "David";
-        root.number = 7;
         
-        Item x = new Item();
-        x.name = "Frank";
-        x.number = 8;       
-        root.left = x;  // important
-        
-        root.right = new Item();
-        root.right.name = "Michael";
-        root.right.number = 10;
-        
-        root.right.left = new Item();
-        root.right.left.name = "Paul";
-        root.right.left.number = 12;
-        
-        root.right.right = new Item();
-        root.right.right.name = "Stephen";
-        root.right.right.number = 4;
+        int[] a = { 8, 5, 4, 3, 6, 3, 4 };
+        Item root = create(a, 0, a.length - 1);
         int c = count(root);
         System.out.println(c);
     }  
+    
+    static Item create(int[] a, int left, int right) {
+        if(left > right) return null;
+        if(left == right) {
+            Item x = new Item();
+            x.number = a[left];
+            return x;
+        } 
+        int mid = (left + right) / 2;
+        Item x = new Item();
+        x.number = a[mid];
+        x.left = create(a, left, mid - 1);
+        x.right = create(a, mid + 1, right);
+        return x;
+    }
     
     static int count(Item e) {
         if (e == null) return 0;
