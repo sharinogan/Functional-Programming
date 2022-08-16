@@ -1,21 +1,31 @@
 class Start {
     public static void main(String[] data) {
-        Element first = new Element();
-        first.name = "Hydrogen";
-        
-        // Linking #1
-        // first.next = new Element();
-       //  first.next.name = "Heluim";
+       String[] all = { "Hydrogen", "Helium", "Lithium",
+                        "Berylium", "Boron"};
        
-       // Linking #2
-       Element second = new Element();
-       second.name = "Helium";
-       first.next = second;      // most important
+       Element first = create(all);
        print(first);
     }  
     
+    static Element create(String[] data) {
+        Element first = null;
+        Element last = null;
+        for (int i = 0; i < data.length; i++) {
+            Element current = new Element();
+            current.name = data[i];
+            if (first == null) {
+                first = current;
+                last = current;
+            } else {
+                last.next = current;
+                last = current;
+            }
+        }
+        return first;
+    }
+    
     static void print(Element e) {
-        if (e == null) return;
+        if (e == null) return;       
         System.out.println(e.name);
         print(e.next);
     }
