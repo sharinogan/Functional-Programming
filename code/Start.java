@@ -5,7 +5,15 @@ class Start {
        
        Element first = create(all);
        print(first);
+       int count = 0;
+       System.out.println(count(first));
     }  
+    
+    // recursive call method to return count node in linked list
+    static int count(Element e ) {
+        if (e == null) return 0;
+        return 1 + count(e.next);
+    }
     
     static Element create(String[] data) {
         Element first = null;
