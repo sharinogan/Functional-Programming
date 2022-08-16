@@ -1,11 +1,14 @@
 class Start {
+
     public static void main(String[] data) {
-        Engine.show();
+        print(7);
+    }
+    
+    static void print(int n) {
+        if (n == 0) return;
+        print(n-1);
+        System.out.println(n);
     }
 }
 
-class Engine {
-    static void show() {
-        System.out.println("This is engine.");
-    }
-}
+  
