@@ -25,9 +25,9 @@ class Start {
     }
     
     static void print(Element e) {
-        if (e == null) return;       
-        System.out.println(e.name);
+        if (e == null) return; 
         print(e.next);
+        System.out.println(e.name);       
     }
 }
 
