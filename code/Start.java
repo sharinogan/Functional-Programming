@@ -1,47 +1,39 @@
 class Start {
     public static void main(String[] data) {
-       String[] all = { "Hydrogen", "Helium", "Lithium",
-                        "Berylium", "Boron"};
-       
-       Element first = create(all);
-       print(first);
-       int count = 0;
-       System.out.println(count(first));
+        Item root = new Item();
+        root.name = "David";
+        root.number = 7;
+        
+        Item x = new Item();
+        x.name = "Frank";
+        x.number = 8;       
+        root.left = x;  // important
+        
+        root.right = new Item();
+        root.right.name = "Michael";
+        root.right.number = 10;
+        
+        root.right.left = new Item();
+        root.right.left.name = "Paul";
+        root.right.left.number = 12;
+        
+        root.right.right = new Item();
+        root.right.right.name = "Stephen";
+        root.right.right.number = 4;
+        int c = count(root);
+        System.out.println(c);
     }  
     
-    // recursive call method to return count node in linked list
-    static int count(Element e ) {
+    static int count(Item e) {
         if (e == null) return 0;
-        return 1 + count(e.next);
-    }
-    
-    static Element create(String[] data) {
-        Element first = null;
-        Element last = null;
-        for (int i = 0; i < data.length; i++) {
-            Element current = new Element();
-            current.name = data[i];
-            if (first == null) {
-                first = current;
-                last = current;
-            } else {
-                last.next = current;
-                last = current;
-            }
-        }
-        return first;
-    }
-    
-    static void print(Element e) {
-        if (e == null) return; 
-        print(e.next);
-        System.out.println(e.name);       
+        return count(e.left) + count(e.right) + 1;
     }
 }
 
-class Element {
-    String name;       // null
-    int number;        // 0
-    double weight;     // 0.0
-    Element next;      // null
+class Item {
+    String name;      // null
+    int number;       // 0
+    double salary;    // 0.0
+    Item left;        // null
+    Item right;       // null
 }
