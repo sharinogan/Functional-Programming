@@ -1,17 +1,28 @@
 class Start {
-
     public static void main(String[] data) {
-        f("");
-    }
-    
-    static void f(String status) {
-        if (status.length() == 3) {
-            System.out.println(status);
-            return; // พอถึงขั้นสุดท้าย return กลับขึ้นไป
-        }
+        Element first = new Element();
+        first.name = "Hydrogen";
         
-        f(status + "L");
-        f(status + "D"); // optional เผื่อมีการเสมอ
-        f(status + "W");
+        // Linking #1
+        // first.next = new Element();
+       //  first.next.name = "Heluim";
+       
+       // Linking #2
+       Element second = new Element();
+       second.name = "Helium";
+       first.next = second;      // most important
+       print(first);
+    }  
+    
+    static void print(Element e) {
+        System.out.println(e.name);
+        System.out.println(e.next.name);
     }
-}    
+}
+
+class Element {
+    String name;       // null
+    int number;        // 0
+    double weight;     // 0.0
+    Element next;      // null
+}
